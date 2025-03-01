@@ -1,21 +1,24 @@
-name: Django CI
-
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
+
+name: 🚀 Deploy website on push
 
 jobs:
-  build:
-
+  web-deploy:
+    name: 🎉 Deploying
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
-
     steps:
+      - name: 🚚 Getting the latest code
+        uses: actions/checkout@v3
+      - name: 📂 Sync
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.tomandsonsltd.com
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          server-dir: /
     # - uses: actions/checkout@v4
     # - name: Set up Python ${{ matrix.python-version }}
     #   uses: actions/setup-python@v3
@@ -28,10 +31,4 @@ jobs:
     # - name: Run Tests
     #   run: |
     #     python manage.py test
-    - name: 📂 Sync
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.tomandsonsltd.com
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: /
+    
