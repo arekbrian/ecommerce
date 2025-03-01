@@ -28,3 +28,10 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+    - name: 📂 Sync
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ftp.tomandsonsltd.com
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        server-dir: /
