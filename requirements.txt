@@ -16,3 +16,5 @@ sqlparse==0.5.3
 toml==0.10.2
 virtualtshop==20.4.3
 wrapt==1.12.1
+
+# prepared by Arek
