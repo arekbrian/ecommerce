@@ -8,4 +8,4 @@ This project deals with developing a Virtual website ‘E-commerce Website’. I
 5. Type python manage.py runserver to start a localhost server for the app.
 6. The API is started and now you can use the API routes to give requests.
 
-Created by : [Your Nam]
+Created by : [Your Na]
